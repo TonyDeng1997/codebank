@@ -1,0 +1,87 @@
+scheduling
+
+In computing, scheduling is the method by which work specified by some means is assigned to resources that complete the work. 
+The work may be virtual computation elements such as threads, processes or data flows, 
+which are in turn scheduled onto hardware resources such as processors, network links or expansion cards.
+
+A scheduler is what carries out the scheduling activity. Schedulers are often implemented so they keep all computer resources busy (as in load balancing), 
+allow multiple users to share system resources effectively, or to achieve a target quality of service. Scheduling is fundamental to computation itself, 
+and an intrinsic part of the execution model of a computer system; the concept of scheduling makes it possible to have computer multitasking with a single 
+central processing unit (CPU).
+
+Types of operating system schedulers
+The process scheduler is a part of the operating system that decides which process runs at a certain point in time. It usually has the ability to pause a running process, move it to the back of the running queue and start a new process; such a scheduler is known as preemptive scheduler, 
+otherwise it is a cooperative scheduler.
+Long term, medium term and short term. 
+
+Dispatcher
+
+Another component that is involved in the CPU-scheduling function is the dispatcher, which is the module that gives control of the CPU to the process selected by the short-term scheduler. It receives control in kernel mode as the result of an interrupt or system call. The functions of a dispatcher involve the following:
+Context switches, in which the dispatcher saves the state (also known as context) of the process or thread that was previously running; the dispatcher then loads the initial or previously saved state of the new process.
+Switching to user mode.
+Jumping to the proper location in the user program to restart that program indicated by its new state.
+
+
+Scheduling disciplines
+These are algorithms in schedulig resources and they are used not only in operating system.
+
+printer, spooler.
+routers,
+disk drive(IO scheduling)
+load balancer
+
+FIFO (FCFS, first come first serve)
+Based on queuing, context switching is simple, overhead is minimal,
+no stavation but lack priority, and throughput is low
+https://en.wikipedia.org/wiki/Scheduling_(computing)
+
+EDF (Earliest deadline first).
+Used in real time system, is a dynamic scheduling system.
+It uses a priority queue.
+Whenever a scheduling event occurs (a task finishes, new task is released, etc.), 
+the queue will be searched for the process closest to its deadline, which will be the next to be scheduled for execution.
+
+Shortest remaining time first
+Similar to shortest job first (SJF). With this strategy the scheduler arranges processes with the least estimated processing time 
+remaining to be next in the queue. This requires advanced knowledge or estimations about the time required for a process to complete.
+
+This is rarely used, starvation is possible.
+
+Fixed priority pre-emptive scheduling
+The operating system assigns a fixed priority rank to every process, and the scheduler arranges the processes in the ready queue in order of their priority. 
+Lower-priority processes get interrupted by incoming higher-priority processes.
+
+Overhead is not minimal, nor is it significant.
+FPPS has no particular advantage in terms of throughput over FIFO scheduling.
+If the number of rankings is limited, it can be characterized as a collection of FIFO queues, one for each priority ranking. 
+Processes in lower-priority queues are selected only when all of the higher-priority queues are empty.
+Waiting time and response time depend on the priority of the process. Higher-priority processes have smaller waiting and response times.
+Deadlines can be met by giving processes with deadlines a higher priority.
+Starvation of lower-priority processes is possible with large numbers of high-priority processes queuing for CPU time.
+
+Round-robin scheduling
+Main article: Round-robin scheduling
+
+The scheduler assigns a fixed time unit per process, and cycles through them. If process completes within that time-slice it got terminated otherwise it is rescheduled after giving a chance to all other processes.
+
+    RR scheduling involves extensive overhead, especially with a small time unit.
+    Balanced throughput between FCFS/ FIFO and SJF/SRTF, shorter jobs are completed faster than in FIFO and longer processes are completed faster than in SJF.
+    Good average response time, waiting time is dependent on number of processes, and not average process length.
+    Because of high waiting times, deadlines are rarely met in a pure RR system.
+    Starvation can never occur, since no priority is given. Order of time unit allocation is based upon process arrival time, similar to FIFO.
+    If Time-Slice is large It becomes FCFS /FIFO or If it is short then it becomes SJF/SRTF.
+
+
+Multilevel queue scheduling
+Main article: Multilevel queue
+
+This is used for situations in which processes are easily divided into different groups. 
+For example, a common division is made between foreground (interactive) processes and background (batch) processes. 
+These two types of processes have different response-time requirements and so may have different scheduling needs. It is very useful for shared memory problems.
+
+For example, Windows NT/XP/Vista uses a multilevel feedback queue, a combination of fixed-priority preemptive scheduling, round-robin, and first in, first out algorithms. 
+In this system, threads can dynamically increase or decrease in priority depending on if it has been serviced already, or if it has been waiting extensively. Every priority level is represented by its own queue, 
+with round-robin scheduling among the high-priority threads and FIFO among the lower-priority ones. In this sense, response time is short for most threads, and short but critical system threads get completed very quickly. 
+Since threads can only use one time unit of the round-robin in the highest-priority queue, 
+starvation can be a problem for longer high-priority threads.
+

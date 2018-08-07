@@ -1,0 +1,103 @@
+Synchronzied keyword
+
+It is the use called 'monitor'. It can be used in front of a method. And here we mainly talk about
+using it around a block.
+
+Now let us further understand how it works, When a thread enters a synchronized block, it attempts to acquire the lock that is associated with the object passed to the statement. 
+(In Java, an object¡¯s lock is often called its monitor.) If another thread is currently holding the lock, the current one will be paused until the lock is released. 
+Otherwise the thread succeeds and enters the synchronized block.
+
+When the thread finishes the synchronized block, it releases the lock, and another thread can acquire it. A lock is released when a thread leaves a synchronized block even if an exception is thrown.
+
+class MutableInteger {
+
+    private int value;
+
+    private Object lock = new Object();
+
+    public void increment() {
+        // Only one thread can execute this block of code at any time
+        synchronized (lock) {
+            value++;
+        }
+    }
+
+    public int getValue() {
+        // Only one thread can execute this block of code at any time
+        synchronized (lock) {
+            return value;
+        }
+    }
+
+}
+
+By the way, using the synchronized keyword on a method instead of in a block is 
+just shorthand for using the object¡¯s own lock for synchronization:
+
+// this is equivalent to 'public synchronized void ...'
+public void increment() {
+    synchronized (this) {
+        value++;
+    }
+}
+
+
+Maybe you are now wondering what lock is used if you synchronize a static method.
+
+public static synchronized void foo() { ... }
+
+In that case it is the class object itself that get¡¯s locked on, so it is equivalent to the following:
+
+public static void foo() {
+    synchronized (TheClassContainingThisMethod.class) {
+        ...
+    }
+}
+
+
+In the following example, the lock in the synchronized must be the class that provide the lock,
+in this case, the threadB uses this to protect a block that contains the notify(). 
+This notify() is the method in class object ThreadB, then in the protected region that contains wait(), 
+this wait() belongs to ThreadB object, and it must be from the same class.
+
+If you replace the synchronized(b) with synchronized(JavaMonitor.class) or 
+ synchronized(new Object()), you will get error.
+
+class ThreadB extends Thread{
+   int total;
+   @Override
+   public void run(){
+	   System.out.println("b thread started");
+       synchronized(this){
+           for(int i=0; i<100 ; i++){
+               total += i;
+           }
+           System.out.println("Computing is done!");
+           notify();
+           System.out.println("Check me");
+       }
+   }
+}
+
+public class JavaMonitor {
+	  public static void main(String[] args){
+	        ThreadB b = new ThreadB();
+	        b.start();
+	
+	        synchronized(b){
+	            try{
+	                System.out.println("Waiting for b to complete...");
+	                b.wait();
+	                System.out.println("waiting is done!");
+	            }catch(InterruptedException e){
+	                e.printStackTrace();
+	            }
+	            System.out.println("Total is: " + b.total);
+	        }
+	    }
+}
+
+
+Ref:
+
+http://tutorials.jenkov.com/java-concurrency/synchronized.html (TODO)

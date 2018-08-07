@@ -1,0 +1,193 @@
+1. find and -exec combination  
+
+Example1: copy the file to every subdirectory 
+
+find . -type d -exec cp .htaccess {} \; 
+
+
+Example2: delete all the files in find
+
+find . -name "index.php" -exec rm {} \;
+
+another way to do this,
+
+find . -name "index.php" -delete
+
+2/ grep 
+
+recursively search all subdirectory
+
+find . | xargs grep "texthere" *
+
+search specific files
+
+grep -r --include "*.txt" texthere .
+
+A more general pattern is,
+
+grep --include="*.xxx" -nRHI "my Text to grep" *
+
+--include=PATTERN
+    Recurse in directories only searching file matching PATTERN.
+
+-n, --line-number
+    Prefix each line of output with the line number within its input file.
+
+-R, -r, --recursive
+    Read all files under each directory, recursively; this is equivalent to the -d recurse option.
+
+-H, --with-filename
+    Print the filename for each match.
+
+-I     
+
+
+2. scp and rync
+
+scp basically reads the source file and writes it to the destination. 
+It performs a plain linear copy, locally, or over a network.
+
+rsync also copies files locally or over a network. But it employs a special delta transfer 
+algorithm and a few optimizations to make the operation a lot faster. 
+Consider the call.
+
+The major difference between these tools is how they copy files.
+
+scp basically reads the source file and writes it to the destination. It performs a plain linear copy, locally, or over a network.
+
+rsync also copies files locally or over a network. But it employs a special delta transfer algorithm and a few optimizations to make the operation a lot faster. Consider the call.
+
+rsync A host:B
+
+    rsync will check files sizes and modification timestamps of both A and B, and skip any further processing if they match.
+
+    If the destination file B already exists, the delta transfer algorithm will make sure only differences between A and B are sent over the wire.
+
+    rsync will write data to a temporary file T, and then replace the destination file B with T to make the update look "atomic" to processes that might be using B.
+
+Anther difference between them concerns invocation. rsync has a plethora of command line options, allowing the user to fine tune its behavior. It supports complex filter rules, runs in batch mode, daemon mode, etc. 
+scp has only a few switches.
+
+To sum up, use scp in daily use, use rsync in cron job.
+
+3. inode data structure
+An inode is an entry in inode table, containing information ( the metadata ) about a regular file and directory. 
+An inode is a data structure on a traditional Unix-style file system such as ext3 or ext4.
+
+inode is a struct type in unix file systems(UFS). In old linux system int contains 11 to 13 pointers, and in modern
+linux system it contains about 15 pointers. These pointers points to file's data blocks. 
+It is also adopted by many related file systems, including the ext3 file system, popular with Linux users.
+
+Twelve pointers that directly point to blocks of the file's data (direct pointers)
+One singly indirect pointer (a pointer that points to a block of pointers that then point to blocks of the file's data)
+One doubly indirect pointer (a pointer that points to a block of pointers that point to other blocks of pointers that then point to blocks of the file's data)
+One triply indirect pointer (a pointer that points to a block of pointers that point to other blocks of pointers that point to other blocks of pointers that then point to blocks of the file's data)
+
+Inode number also called as index number , it consists following attributes.
+
+File types ( executable, block special etc )
+Permissions ( read, write etc )
+UID ( Owner )
+GID ( Group )
+FileSize
+Time stamps including last access, last modification and last inode number change.
+File deletion time
+Number of links ( soft/hard )
+Location of file on harddisk.
+Some other metadata about file
+
+To check inode number of file use following command, first field in ouput is an inode number.
+
+# ls -il  tecadmin.txt
+1150561 -rw-r--r-- 1 root root 0 Mar 10 01:06 tecadmin.txt
+
+Search file on basis of inode number.
+
+# find /root -inum 1150561
+/root/tecadmin.txt
+
+Delete a file: Deleting a file in linux decrements the link count and freeing the inode bumber to be reused
+
+Copy file: cp allocates a free inode number and placing a new entry in inode table.
+
+# ls -il  tecadmin.txt
+1150561 -rw-r--r-- 1 root root 0 Mar 10 01:06 tecadmin.txt
+# cp tecadmin.txt tecadmin.net.txt
+# ls -il tecadmin.net.txt
+1150562 -rw-r--r-- 1 root root 0 Mar 10 01:09 tecadmin.net.txt
+
+Move or Rename a file: if destination is same filesystem as the source, Has no impact on inode number, it only changes the time stamps in inode table.
+
+# ls -il  tecadmin.txt
+1150561 -rw-r--r-- 1 root root 0 Mar 10 01:06 tecadmin.txt
+# mv tecadmin.txt /opt/
+# ls -il /opt/tecadmin.txt
+1150561 -rw-r--r-- 1 root root 0 Mar 10 01:06 /opt/tecadmin.txt
+
+Typically, it is in /usr/sys/ino.h.
+
+1: /*
+   2:  * Inode structure as it appears on
+   3:  * the disk. Not used by the system,
+   4:  * but by things like check, df, dump.
+   5:  */
+   6: struct  inode
+   7: {
+   8:     int i_mode;
+   9:     char    i_nlink;
+  10:     char    i_uid;
+  11:     char    i_gid;
+  12:     char    i_size0;
+  13:     char    *i_size1;
+  14:     int i_addr[8];
+  15:     int i_atime[2];
+  16:     int i_mtime[2];
+  17: };
+
+4. dentries
+
+
+A filesystem is represented in memory using dentries and inodes.  Inodes are
+the objects that represent the underlying files (and also directories).  A
+dentry is an object with a string name (d_name), a pointer to an inode
+(d_inode), and a pointer to the parent dentry (d_parent).
+
+So a tree such as
+
+	/
+	|
+	foo
+	|   \
+	bar  bar2
+
+is represented by four inodes: one each for foo, bar, and bar2, and the root;
+and three dentries: one linking bar to foo, one linking bar2 to foo, and one
+linking foo to the root.  The first of those dentries, for example, has a name
+of "bar", a d_inode pointing to the underlying file bar, and a d_parent
+pointing to the dentry for foo (which in turn would have a d_parent pointing to
+the dentry for the root).  The root dentry has a d_parent that points to
+itself.
+
+Note that the mapping from dentries to inodes given by d_inode is in general a
+many-to-one mapping; a single file may be pointed to by multiple paths in the
+same filesystem (called "hard links"), in which case it will not be deleted
+as long as any such path exists.
+
+Files and directories may also be opened by processes, of course, and a struct
+file is used to represent this.  The struct file contains a pointer to the
+dentry.  The underlying file will also not be deleted as long as there are
+processes holding the file open, even though that file may no longer be
+accessible by any path in the filesystem.
+
+Inodes in addition have i_sb pointers that point to the superblock, a structure
+representing the underlying filesystem (usually representing either the
+physical filesystem stored on a local partition, or a filesystem on a remote
+system, in the case of NFS).
+
+To sum up , dentry is the link object(line we draw) in the above chart.
+
+ref:
+http://www.fieldses.org/~bfields/kernel/vfs.txt
+
+Question is find recursive or grep is recursive?
+A: find is recursive by default and grep has to specify recursive option -r/-R.

@@ -1,0 +1,276 @@
+SEO
+
+stands for search engine optimization.
+It is a search engine marketing step, so code must following the 
+way that search engine works.
+
+How search engine works?
+
+1. Crawling
+crawler: get all the link of urls linked to the site.
+
+2. Indexing: index all the links and save to a giant database.
+the process of indexing is identifying the words and expressions 
+that best describe the page and assigning the page to particular keywords.
+
+Simply think,
+
+indexing_hashcode, keyword, url, rank.
+
+3. Calculating Relevancy
+It is likely that more than one page contains the search string, so the search 
+engine starts calculating the relevancy of each of the pages in its index to the search string.
+
+4. Retrieving Results - The last step in search engine activities is retrieving the best matched results. 
+Basically, it is nothing more than simply displaying them in the browser.
+
+Note: Relevancy algorithm is changed very often, so the rank will change as well.
+
+
+What is SEO Copywriting?
+SEO Copywriting is the technique of writing viewable text on a web page in such a way that it reads well for the surfer, and also targets specific search terms. 
+Its purpose is to rank highly in the search engines for the targeted search terms. Along with viewable text, SEO copywriting usually optimizes other on-page elements 
+for the targeted search terms. These include the Title, Description, Keywords tags, headings, and alternative text. The idea behind SEO copywriting is that search engines 
+want genuine content pages and not additional pages often called "doorway pages" that are created for the sole purpose of achieving high rankings.
+
+What is Search Engine Rank?
+When you search any keyword using a search engine, it displays thousands of results found in its database. A page ranking is measured by the position of web pages displayed 
+in the search engine results. If a search engine is putting your web page on the first position, then your web page rank will be number 1 and it will be assumed as the page 
+with the highest rank. SEO is the process of designing and developing a website to attain a high rank in search engine results.
+
+On-page SEO and off-page SEO
+
+On-page: write good code in web site.s
+off-page: put popular link and exchange links.
+
+White-hat SEO
+Good page development.
+
+Black-hat SEO
+An SEO tactic, is considered as Black Hat or Spamdexing if it has the following features:
+
+    Attempting ranking improvements that are disapproved by the search engines and/or involve deception.
+
+    Redirecting users from a page that is built for search engines to one that is more human friendly.
+
+    Redirecting users to a page that was different from the page the search engine ranked.
+
+    Serving one version of a page to search engine spiders/bots and another version to human visitors. This is called Cloaking SEO tactic.
+
+    Using hidden or invisible text or with the page background color, using a tiny font size or hiding them within the HTML code such as "no frame" sections.
+
+    Repeating keywords in the metatags, and using keywords that are unrelated to the website content. This is called metatag stuffing.
+
+    Calculated placement of keywords within a page to raise the keyword count, variety, and density of the page. This is called keyword stuffing.
+
+    Creating low-quality web pages that contain very little content but are instead stuffed with very similar keywords and phrases. These pages are called Doorway or Gateway Pages.
+
+    Mirror websites by hosting multiple websites - all with conceptually similar content but using different URLs.
+
+    Creating a rogue copy of a popular website which shows contents similar to the original to a web crawler, but redirects web surfers to unrelated or malicious websites. This is called page hijacking.
+
+
+SEO Techniques
+
+1. domain name
+2. keywords
+3. File Naming Style
+Keep the web page filename short, simple, descriptive, and relevant to the page content.
+Try to use a maximum of 3-4 keywords in your filename, and these keywords should appear on your web page title as well.
+Separate all keywords with hyphen rather than with underscore.
+Keep your sub-directories name as short as possible.
+Restrict the file size to less than 101K because Google chops almost everything above that.
+
+4. Layout of the page
+1/ not too fancy or complicated
+2/ keyword density: You can go with 10% which is good enough.
+
+Here are a few guidelines that you should keep in mind while designing a web page.
+
+    You should have more text content than HTML elements.
+
+    No frames. They are the enemies of search engines, and search engines are enemies of frames.
+
+    No ads if possible. Because most of the ads use Java-Script which is not advised to be used.
+
+    No JavaScript. If you need JavaScript, call it from an external file rather than dumping the code in the HTML file. JavaScript drop-down menus prevent spiders from crawling beyond your homepage. If you use them, be sure to include text links at the bottom of the page.
+
+    Do not put anything in the page topic that does not fit perfectly.
+
+    No unnecessary directories. Keep your files as close to the root as possible.
+
+    No fancy stuff (Flash, Splash, Animated Gifs, Rollovers, etc.) unless absolutely necessary.
+
+5. Keyword Weight/frequency and location
+
+Here is a list of places where you should try to use your main keywords.
+
+    Keywords in the <title> tag(s).
+    Keywords in the <meta name="description">.
+    Keywords in the <meta name="keyword">.
+    Keywords in <h1> or other headline tags.
+    Keywords in the <a href="http://yourcompany.com">keywords</a> link tags.
+    Keywords in the body copy.
+    Keywords in alt tags.
+    Keywords in <!-- insert comments here> comments tags.
+    Keywords in the URL or website address.
+
+6. What is Word Stemming?
+Google uses a feature called word stemming that allows all forms of the word - singular, plural, 
+verb form as well as similar words to be returned for a given search query.
+So if someone types in "house plans", not only the pages that are optimized for that phrase but the pages 
+that contain all variations of that phrase are returned. For example, "house plan", "house planning", "house planner"
+
+7. Meta tags
+<meta name="keywords" 
+         content="KEYWORD1 KEYWORD2 KEYPHRASE1 etc. 
+         about 30 to 40 unique words">
+
+<meta name="description" 
+         content="An accurate, keyword-rich description 
+         about 150 characters">
+
+Meta Description Tag Tips
+
+Important tips for good Meta description tags:
+
+    Use keywords in your meta description tag.
+
+    Try not to repeat the words overly often, but try to use multiple syntaxes of your key words.
+
+    There should not be more than 150 characters in a description metatag of a single web page.
+
+    Use a different meta description tag for each page, as each page is different and stands a better chance of being found if you place a good title and description on it.
+
+
+Robots Meta Tag
+
+The important metatag that you may need sometime is the Robots Metatag which looks like this:
+
+<meta name="robots" content="noindex,nofollow">
+
+Using the above metatag, you can tell a spider or a robot that you do not want some of your pages indexed, or that you do not want your links followed.
+
+8. Title optimization
+
+Best Practices for Creating Titles
+
+Here are some best practices you should follow for creating titles on pages:
+
+    The title shouldn't consist of more than about 9 words or 60 characters.
+
+    Each page should have a unique title.
+
+    If practical, try to include your Primary Keyword Phrase in every title of every page.
+
+    Begin the title of your home page with your Primary Keyword Phrase, followed by your best Secondary Keyword Phrases.
+
+    Use more specific variations to your Primary Keyword Phrase on your specific product, service, or content pages.
+
+    If you must include your company name, put it at the end of the title.
+
+    Use the best form, plural or singular, for your keywords based on what WordTracker says is searched on more often.
+
+    Do not overdo it - do not repeat your keywords more than 2 to 3 times in the title.
+
+    Make sure the <title> tag is the first element in the <head> section of your page - this makes it easier for Google to find the page.
+
+ 
+9. Anchor optimization
+<a href="otherpage.htm" title="Anchor Title">Anchor Text</a>
+The Anchor Title plays a very important role and is seen by most of the search engines. The anchor title should have appropriate keywords. 
+Anchor title helps the site visitors using a balloon, and displaying written text.
+
+The Anchor Text is another important part, which should be selected very carefully because this text is used not only for search engines but also for navigation purpose. 
+You should try to use the best keywords in your anchor text.
+The otherpage.htm is the link to another webpage. This link could be to an external site. Here, you need to ensure that the linked page does exist; 
+otherwise it is called a broken link, which gives a bad impression to search engines as well as to site visitors.
+
+20. correct html syntax 
+
+21. Marketing 
+    Buy a place on high-rank website where you can put your link.
+
+    Subscribe for Google's AdWords program to drive traffic towards your site.
+
+    You can go for alternative advertising option to increase the number of hits on your site, which can result in your site link popularity.
+
+    How to Increase Link Popularity?
+
+There are various ways of increasing your website link popularity. You can follow the tips given below, which are easily doable.
+
+    Submit your site in popular search engines manually. Do not go for automated submission.
+
+    Get your site listed in Open Directory Projects like dmog.org, yahoo.com. Getting listed in these directories gives a boost in link popularity and improve search engine ranking in other search engines.
+
+    Provide high quality content so that anyone would naturally link to your site if you are featuring what they want, and that is not available anywhere else.
+
+    Leverage your personal relations with other webmasters. Put your site link on their sites. One-way links often count for more than reciprocal links.
+
+    Participate in Link Exchange Programs. Find top 20 sites doing the same business and contact them for reciprocal links. Link exchange between unrelated sites might affect the ranking of websites in the search engine.
+
+    If you are subscribed in a forum and the forum does not have any restriction to keep your site link as your signature, then it can help you to increase your site popularity.
+
+    Submit your site to bookmark sites like DIGG and Slashdot. Before submitting, please go through their spam policy.
+
+    Write good articles in blogging sites and give a few references of your links within that article.
+
+    Keep providing good content to your site visitors. Try to keep them busy on your site. If possible create forums, newsletters, blogs, etc.
+    
+ 
+ Mobile SEO
+ First Mobile web app has to be easy to use in 
+ mobile and easy to navigate and lightweight and fast to load.
+
+There are different mobile configuration
+Mobile Configuration 	URL 	HTML
+Responsive Web Design 	Stays the same 	Stays the same
+Dynamic Serving 	Stays the same 	Different HTMLs
+Separate URLs 	Different URLs 	Different HTMLs
+
+Responsive Web Design
+Google recommends responsive web design become it is the simplest mobile configuration and very easy to implement. 
+It serves the same HTML code on the same URL, however it adjusts the display based on the screen size of the mobile device.
+
+Dynamic Serving
+Requests from mobile or non mobile will inform the server to direct to different htmls.
+
+Separate URLs
+When you maintain two different URLs — one for mobile users and another for desktop users – make sure you inform Google explicitly when to serve which version. Google does not recommend separate URLs because it can detect automatically that your mobile pages are different from your desktop pages.
+
+
+What should you do for responsive design?
+When you have a responsive design, just make sure you have the following meta-tag in your webpage header −
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+What should you do for dynamically served?
+If your website is dynamically served, make sure you allow Google detect your configuration using the Vary HTTP header −
+Vary: User-Agent
+The Vary header is important to tell the search engines that different content will be served on desktops and mobile devices. This header is really important when your content is served by any cache system like a Content Delivery Network and those systems will make use of this header while serving content on different devices.
+
+What should you do for separate URLs
+In case you maintain separate URLs, e.g., example.com and m.example.com, then you can inform Google by adding a special link rel=alternate tag in your desktop version and vice versa as follows.
+
+Desktop page should have following in its header:
+<link rel="alternate" media="only screen and (max-width: 640px)"
+href="http://m.example.com" >
+Mobile page should have following in its header:
+<link rel="canonical" href="http://www.example.com" >
+
+Things to avoid,
+
+Slow mobile pages,
+Tool to check the speed, speed will affect ranking,
+https://www.google.com/webmasters/tools/mobile-friendly/
+ 
+Don't Block CSS and JavaScript 
+Google recommends to use inline CSS and Javascripts for mobile friendly websites 
+so that they can be downloaded along with the content. So if you don’t have much CSS, then try to adjust it within the tag itself; 
+but if you are using a lot of CSS in separate files, then try to include it at the bottom which will stop blocking the other content being downloaded. 
+The same rule applies to Javascript, which can be kept inside the page itself or included at the bottom of the page. 
+If you can avoid including the file at the top of the page, then make use of async attribute while including them.
+
+<script async type="text/javascript" src="jquery.js"></script>
+ 
+
+ref: https://www.tutorialspoint.com/seo/mobile-seo-techniques.htm

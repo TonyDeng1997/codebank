@@ -1,0 +1,124 @@
+DaemonThread
+
+1/ When we create a Thread in java, by default it¡¯s a user thread and if it¡¯s running JVM
+will not terminate the program. When a thread is marked as daemon thread, JVM doesn¡¯t 
+wait it to finish and as soon as all the user threads are finished, it terminates the program
+as well as all the associated daemon threads.
+
+Daemon thread in java is a service provider thread that provides services to the user thread. Its life depend on the mercy of user threads i.e. when all the user threads dies, JVM terminates this thread automatically.
+
+There are many java daemon threads running automatically 
+e.g. gc, finalizer etc. 
+
+1/   It provides services to user threads for background supporting tasks. It has no role in life than to serve user threads.
+2/   Its life depends on user threads.
+3/   It is a low priority thread.
+
+So what is user thread, 
+
+ * In the debug mode, no debugging point to break is necessary.
+ * And you can see Daemon thread was there for 5 secs and disappear, and main thread is going 
+ * on and on.
+ 
+ 
+public class DaemonThread extends Thread{
+    public DaemonThread() {
+        setDaemon(true);
+    }
+    
+    public void run() {
+    	// let it sleep 5 secs and watch it in debugging view
+       	try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        System.out.println("Is this thread Daemon? - "+isDaemon());
+    }
+ 
+    public static void main(String a[]) throws InterruptedException {
+    	System.out.println("In main thread");
+        DaemonThread dt = new DaemonThread();
+        // even you can set daemon constrain here also
+        // it is like dt.setDeamon(true)
+        dt.start();
+        while(true) {
+        	System.out.println("main thread**");
+        	Thread.sleep(1000);
+        	
+        }
+    }
+}
+
+To better understand this, see the following program,
+
+public class DaemonThread2 extends Thread{
+
+    public void run() {
+    	if (!this.isDaemon() ) {
+    		try {
+				Thread.sleep(15000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	} else {
+    		// let daemon thread sleep 10 secs, you will see it.
+    		try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+        System.out.println("Is this thread Daemon? - "+isDaemon());
+    }
+ 
+    public static void main(String a[]) throws InterruptedException {
+    	
+        DaemonThread2 dt1 = new DaemonThread2();
+        DaemonThread2 dt2 = new DaemonThread2();
+        DaemonThread2 dt3 = new DaemonThread2();
+        dt1.setName("DaemonThread");
+        dt1.setDaemon(true);
+        dt2.setName("userThread1");
+        dt3.setName("userThread2");
+        // even you can set daemon constrain here also
+        // it is like dt.setDeamon(true)
+        dt1.start();
+        dt2.start();
+        dt3.start();
+    }
+}
+
+Daemon thread exists before the two user threads exists, before the two user threads are not running, they are sleeping.
+The same thing happens in the first program two, if main thread is sleeping, then daemon thread will quit.
+
+When jvm terminates Daemon thread, it will not do the finally {} block and jvm will not wait for it to finish.
+ 
+
+public class DaemonThread3 extends Thread{
+
+    public static void main(String a[]) throws InterruptedException {
+    	
+    	       Thread daemonThread = new Thread(new Runnable(){
+    	            @Override
+    	           public void run(){
+    	               try{
+    	               while(true){
+    	                   System.out.println("Daemon thread is running");
+    	               }
+    	                 
+    	               }catch(Exception e){
+    	                 
+    	               }finally{
+    	                   System.out.println("Daemon Thread exiting"); //never called
+    	               }
+    	           }
+    	       }, "Daemon-Thread");
+    	     
+    	       daemonThread.setDaemon(true); //making this thread daemon
+    	       daemonThread.start();
+    	}
+}

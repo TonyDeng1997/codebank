@@ -1,0 +1,31 @@
+Mathematical analysis of quicksort shows that, on average, 
+the algorithm takes O(n log n) comparisons to sort n items. 
+In the worst case, it makes O(n2) comparisons, though this behavior is rare.
+In practical, it is an efficient sorting algorithm and space wise more efficient than merge sort.
+
+
+Choice of pivot
+In the very early versions of quicksort, the leftmost element of the partition would often be chosen as the pivot element. 
+Unfortunately, this causes worst-case behavior on already sorted arrays, which is a rather common use-case. 
+The problem was easily solved by choosing either a random index for the pivot, choosing the middle index of the partition or 
+(especially for longer partitions) choosing the median of the first, middle and last element of the partition for the pivot 
+(as recommended by Sedgewick). This "median-of-three" rule counters the case of sorted (or reverse-sorted) input, and gives a 
+better estimate of the optimal pivot (the true median) than selecting any single element, when no information about the ordering 
+of the input is known.
+
+Specifically, the expected number of comparisons needed to sort n elements (see 搂 Analysis of randomized quicksort) with random 
+pivot selection is 1.386 n log n. Median-of-three pivoting brings this down to Cn, 2 鈮� 1.188 n log n, at the expense of a three-percent 
+increase in the expected number of swaps.[6] An even stronger pivoting rule, for larger arrays, is to pick the ninther, a 
+recursive median-of-three (Mo3), defined as[6]
+
+ninther(a) = median(Mo3(first 鈪� of a), Mo3(middle 鈪� of a), Mo3(final 鈪� of a))
+Selecting a pivot element is also complicated by the existence of integer overflow. 
+If the boundary indices of the subarray being sorted are sufficiently large, the na茂ve expression for the middle index, 
+(lo + hi)/2, will cause overflow and provide an invalid pivot index. This can be overcome by using, for example, 
+lo + (hi鈭抣o)/2 to index the middle element, at the cost of more complex arithmetic. 
+Similar issues arise in some other methods of selecting the pivot element.
+
+Pay attention to (lo + hi)/2 vs lo + (hi鈭抣o)/2.
+
+All three sorts run in time although heap sort is probably the slowest. However, heapsort is a non-recursive sort. 
+Quicksort usually is fastest on arrays provided the pivot is chosen randomly while mergesort works best on linked lists.

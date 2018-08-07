@@ -1,0 +1,45 @@
+Apache Server
+
+
+0. directive
+
+¡°Directives¡± is the terminology that Apache uses for the commands in Apache¡¯s
+configuration files. They are normally relatively short commands, typically
+key value pairs, that modify Apache¡¯s behavior. An .htaccess file allows
+developers to execute a bunch of these directives without requiring access to
+Apache¡¯s core server configuration file, often named httpd.conf. This file,
+httpd.conf, is typically referred to as the "global configuration file" and I will
+refer to it with that name or its short filename equivalent.
+
+This feature is ideal for many hosting companies deploying a shared hosting
+environment. The hosting company will not allow its customers to access the
+global configuration file, which ultimately affects all of the customers hosted on
+that server. Instead, by enabling .htaccess, they give each of their customers
+the power to specify and execute their own Apache directives in their own
+directories and subdirectories. Of course it's also useful to the single
+developer, as you will see.
+
+1. .htaccess
+
+It's worth mentioning that anything that can be done with a .htaccess file can
+be done in the httpd.conf file. However, NOT everything that can be done in
+httpd.conf can be done in a .htaccess file. In fact .htaccess files must be
+enabled in the httpd.conf file in order to be executed at all. Once enabled,
+their power can be limited to certain ¡°contexts¡± so that they may be allowed
+to override some settings but not others. This gives the system administrators
+more control over what they let other developers get away with in their
+.htaccess files.
+
+Enabling .htaccess:
+
+.htaccess files are normally enabled by default. This is actually controlled
+by the AllowOverride Directive in the httpd.conf file. This directive
+can only be placed inside of a <Directory> section. Don¡¯t let this confuse
+you. The typical httpd.conf file defines a DocumentRoot and the majority
+of the file will contain Directives inside a <Directory> section dealing
+with that directory. This includes the AllowOverride directive.
+
+The default value is actually ¡°All¡± and thus .htaccess files are enabled by
+default. An alternative value would be ¡°None¡± which would mean that they are
+completely disabled. There are numerous other values that limit configuration of only
+certain contexts. Some are:

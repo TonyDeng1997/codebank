@@ -1,0 +1,44 @@
+﻿Threaded Binary Tree
+A. J. Perlis and C. Thornton have proposed new binary tree called "Threaded Binary Tree", which make use of NULL pointer to improve its traversal processes. In threaded binary tree, NULL pointers are replaced by references to other nodes in the tree, called threads.
+
+Threaded Binary Tree is also a binary tree in which all left child pointers that are NULL (in Linked list representation) points to its in-order predecessor, and all right child pointers that are NULL (in Linked list representation) points to its in-order successor.
+
+If there is no in-order predecessor or in-order successor, then it point to root node.
+
+Example,
+
+To convert above binary tree into threaded binary tree, first find the in-order traversal of that tree..
+
+In-order traversal of above binary tree...
+H - D - I - B - E - A - F - J - C - G
+
+When we represent above binary tree using linked list representation, nodes H, I, E, F, J and G left child pointers are NULL. This NULL is replaced by address of its in-order predecessor, respectively (I to D, E to B, F to A, J to F and G to C), but here the node H does not have its in-order predecessor, so it points to the root node A. And nodes H, I, E, J and G right child pointers are NULL. This NULL ponters are replaced by address of its in-order successor, respectively (H to D, I to B, E to A, and J to C), but here the node G does not have its in-order successor, so it points to the root node A.
+
+now two notions here to understand these: in-order predecessor and in-order successor.
+
+What is Pre­de­ces­sor and Successor :
+When you do the inorder tra­ver­sal of a binary tree, the neigh­bors of given node are called Pre­de­ces­sor(the node lies behind of given node) and Suc­ces­sor(the node lies ahead of given node).
+
+Thus, there are these many combinations.
+
+Binary tree
+in-order: 
+See my code. The predecessor will be added. Successor has three cases, 
+If x has right child, successor is the right child's left most left.
+If the x is right most leaf of the tree, it will be null. 
+If x is not the above cases, then use a backtrack method to handle it. 
+
+pre-order:
+post-order: 
+
+BST
+in-order:
+
+See my code. So the solution still uses the bst techniques. So it basically check if root is x, or x is in root.left or x in in the root.right. In the latter two cases, the predecessor and successor will be set easily and do a recursion.
+
+pre-order
+post-order
+
+ref: 
+
+more code can be found here: http://algorithms.tutorialhorizon.com/inorder-predecessor-and-successor-in-binary-search-tree/
