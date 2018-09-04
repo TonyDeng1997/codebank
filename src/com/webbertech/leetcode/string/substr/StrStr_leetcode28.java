@@ -25,29 +25,6 @@ This is consistent to C's strstr() and Java's indexOf().
 
 public class StrStr_leetcode28 {
 	
-	public static int strStr2(String haystack, String needle) {
-		 if (haystack.equals("") && needle.equals("")) {
-	            return 0;
-	     }  else if (haystack.equals("") && !needle.equals("")) {
-	            return -1;
-	     } else {
-	           for(int i=0;i<=haystack.length()-needle.length();i++) {
-	             int j=0;
-	        	   for (j=0;j<needle.length();j++) {
-	            	 if (haystack.charAt(i+j) != needle.charAt(j)) {
-	            		 break;
-	            	 }
-	             }
-	             if (j==needle.length()) {
-	            	 return i;
-	             }
-	           }
-	           
-	     }
-		 
-		 return -1;
-    }
-	
 	public static int strStr(String haystack, String needle) {
 		  for (int i = 0; ; i++) {
 		    for (int j = 0; ; j++) {
@@ -63,6 +40,30 @@ public class StrStr_leetcode28 {
 		    }
 		  }
 	}
+	
+	
+	public static int strStr2(String haystack, String needle) {
+		 if (haystack.equals("") && needle.equals("")) {
+	            return 0;
+	     }  else if (haystack.equals("") || needle.equals("")) {
+	            return -1;
+	     } else {
+	           for(int i=0;i<=haystack.length()-needle.length();i++) {
+	             int j=0;
+	        	   for (j=0;j<needle.length();j++) {
+	            	 if (haystack.charAt(i+j) != needle.charAt(j)) {
+	            		 break;
+	            	 }
+	               }
+	             if (j==needle.length()) {
+	            	 return i;
+	             }
+	           }
+	           
+	     }
+		 
+		 return -1;
+   }
 	
 	public static void main(String[] args) {
 		System.out.println(strStr("hello", "ll"));

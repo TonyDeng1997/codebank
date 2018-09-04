@@ -16,10 +16,15 @@ Pay attention to this.
  * */
 public class RemovedLinkedListElement_leetcode203 {
 	public static ListNode removeElements(ListNode head, int val) {
-		   	//dummy pointer/variable saves the address of this object,
-			//changing second saves the same address of the same object.
-			//changing the value of 'second' will not change the value of 'dummy'
-	        ListNode dummy = new ListNode(0);
+		    /*
+		     * The current solution makes a dummy node to preserve the head pointer.
+		     * Keey two pointers move at the same time. They point to the same data,
+		     * but their distance is one which is to help remove values if the value 
+		     * equals to the current pointers. The idea is to keey two current pointers,
+		     * say first and second.
+		     * 
+		     * */
+		    ListNode dummy = new ListNode(0);
 	        dummy.next = head;
 	        ListNode first = head;
 	        ListNode second = dummy;

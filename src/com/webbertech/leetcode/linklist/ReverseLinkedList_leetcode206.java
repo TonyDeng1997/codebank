@@ -39,7 +39,7 @@ public class ReverseLinkedListI_leetcode206 {
 			if (head == null || head.next == null) return head;  
 		     ListNode nextListNode = head.next;  
 		     head.next = null;  
-		     ListNode rest = reverseList(nextListNode);  
+		     ListNode rest = reverseList2(nextListNode);  
 		     nextListNode.next = head; 
 		     return rest;  
 	}
