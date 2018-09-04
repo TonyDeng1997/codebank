@@ -4,9 +4,21 @@ import com.webbertech.leetcode.util.ListNode;
 
 /*
  * leetcode 206 reverse singly linkedlist
+ * 
+ * Reverse a singly linked list.
+
+Example:
+
+Input: 1->2->3->4->5->NULL
+Output: 5->4->3->2->1->NULL
+Follow up:
+
+A linked list can be reversed either iteratively or recursively. Could you implement both?
  * */
 public class ReverseLinkedListI_leetcode206 {
 
+	
+	 // Solution1: iterative
 	 public static ListNode reverseList(ListNode head) {
 		 if (head == null)
 	            return null;
@@ -20,7 +32,18 @@ public class ReverseLinkedListI_leetcode206 {
 	            p2=p3;
 	        }
 	        return p1;
-	    }
+	 }
+	 
+	 // Solution2: recursion
+	 public static ListNode reverseList2(ListNode head) {
+			if (head == null || head.next == null) return head;  
+		     ListNode nextListNode = head.next;  
+		     head.next = null;  
+		     ListNode rest = reverseList(nextListNode);  
+		     nextListNode.next = head; 
+		     return rest;  
+	}
+	 
 	 
 	 public static void main(String[] args) {
 		 ListNode head = new ListNode(1);
