@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
 /*
  * Leetcode 322. Coin Change
  * 
@@ -21,7 +24,7 @@ Note:
 You may assume that you have an infinite number of each kind of coin.
  * */
  
-class Solution {
+public class CoinChange_leetcode322 {
  
 	  public int coinChange(int[] coins, int amount) {
 	        if (coins.length == 0 || amount ==0) {
@@ -33,7 +36,7 @@ class Solution {
 	        }
 	        
 	        ArrayList<Integer> list = new ArrayList<>();
-	        for (int i=0;i< coins.legnth;i++) {
+	        for (int i=0;i< coins.length;i++) {
 	            list.add(coins[i]);
 	        }
 	        Collections.sort(list, Collections.reverseOrder());
@@ -41,8 +44,9 @@ class Solution {
 	        
 	        //5, 2, 1
 	        for (int i=0;i< list.size();i++) {
-	            for (int j=0; j< list.)
+	            //for (int j=0; j< list.)
 	        }
+			return num;
 	    }
 	
 	public static void main(String[] args) {

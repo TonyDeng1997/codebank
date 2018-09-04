@@ -180,8 +180,7 @@ public class ATOI {
 
 
 	public static void main(String[] args) {
-	  
-		String num = "123";
+	    String num = "123";
 		System.out.println(num + " "+ atoi(num));
 
 		num = "+2";
@@ -196,7 +195,7 @@ public class ATOI {
 	    num = "-2";
    		System.out.println(num + " "+ atoi(num));
 	
-		 num = "    010";
+		num = "    010";
    		System.out.println(num + " "+ atoi(num));
     	
     	num = "";
@@ -221,20 +220,18 @@ public class ATOI {
 	    System.out.println(num + " "+ atoi(num));
 	    
 	    num = "-123";
-			System.out.println(num + " "+ atoi(num));
+		System.out.println(num + " "+ atoi(num));
 	  
-		num ="-2147483647";
+		num = "-2147483647";
 	    System.out.println(num + " "+ atoi(num));
 	    
-	    num ="-2147483648";
+	    num = "-2147483648";
 	    System.out.println(num + " "+ atoi(num));
 	    
-	
-		
-		num ="2147483648";
-		    System.out.println(num + " "+ atoi(num));
-		    
-		    num ="-2147483649";
-		    System.out.println(num + " "+ atoi(num));
+		num = "2147483648";
+		System.out.println(num + " "+ atoi(num));
+		   
+	    num = "-2147483649";
+	    System.out.println(num + " "+ atoi(num));
 	}
 }
