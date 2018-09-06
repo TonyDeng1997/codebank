@@ -119,7 +119,7 @@ public class StringToInteger_ATOI_leetcode8 {
 		} else if (num.matches("-?\\d+.*$")) {
 			String[] arry = num.split("\\s+");
 			intNum = processIntegerString(arry[0]);
-		} else if (num.matches("-?\\d+\\.\\d+")) {
+		} else if (num.matches("-?\\d+\\.\\d+.*$")) {
 			intNum = (int)processDecimalString(num);
 		}
 		

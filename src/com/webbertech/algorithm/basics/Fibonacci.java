@@ -26,6 +26,22 @@ public class Fibonacci {
 		return m[n];
 	}
 	
+	public static int fibonacci_best(int n) {
+		if (n == 1 || n ==2) {
+			return 1;
+		}
+		
+		int x=1, y=1, sum = 1;
+		for (int i=3 ;i<=n;i++) {
+			x = y;
+			y = sum;
+			sum = x+y;
+		}
+		
+		return sum;
+	}
+	
+	
 	// The above two solutions are not ideal as before the output is calculated
 	// all the information is retained in the memory
 
