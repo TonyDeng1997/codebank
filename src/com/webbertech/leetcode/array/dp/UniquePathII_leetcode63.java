@@ -2,6 +2,7 @@ package com.webbertech.leetcode.array.backtracking;
 
 /*
  * Leetcode 63 Unique Path II (dp question -- a little hard)
+ * 
  *  A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
 	The robot can only move either down or right at any point in time. The robot is trying to reach 
 	the bottom-right corner of the grid (marked 'Finish' in the diagram below).
@@ -31,14 +32,12 @@ package com.webbertech.leetcode.array.backtracking;
 	2. Down -> Down -> Right -> Right
 	
 	Solution:
-	
 	The solution is that if there is already a 1 there, you either have to 
 	replace its value with 0, and the rest of the solution is the same as 
 	leetcode62 and leetcode64. Because it just means that that place has a 
 	obstacle, and no way to go through it, that is why it is 0. The number
 	next to the obstacle in the same row should inherit value from above it,
 	or the value under the obstacle to inherit the value on the left of it.
-	
 	
 	for example,
 	[0,0,0],
@@ -63,9 +62,7 @@ package com.webbertech.leetcode.array.backtracking;
   	[[1][1][1]]
   	
   	solution: 
-  	
   	It uses a one dimensional array to record the counts.
-	
  * */
 
 public class UniquePathII_leetcode63 {
