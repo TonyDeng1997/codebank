@@ -104,7 +104,6 @@ public class HotelEvalator {
 	 * @return the last index of the user that belongs in one group. If there
 	 * are two indexes in it, then there will be two groups
 	 */
-
 	static List<Integer> getGroups(int[] A, int[] B, int M, int X, int Y) throws Exception {
 		int totalWeight = 0;
 		ArrayList<Integer> users = new ArrayList<>();
@@ -142,5 +141,4 @@ public class HotelEvalator {
 		System.out.println(solution(A1, B1, 5, 2, 200));
 
 	}
-
 }
