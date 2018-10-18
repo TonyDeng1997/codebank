@@ -1,4 +1,5 @@
 1. mutexes
+
 Simply a locking variable, like binary or boolean to lock the critical section.
 
 private static readonly Object instanceLock = new Object();
@@ -23,14 +24,16 @@ The second thread will wait, get into the section, and get the initialized insta
 Any sort of synchronization of a static member may use the lock statement similarly.
 
 2. semaphores
-
 Semaphore is signaling mechanism, and it is a generalized mutex.
-
 In java concurrency API, we can compare this,
 
-Semaphores ¨C Restrict the number of threads that can access a resource. Example, limit max 10 connections to access a file simultaneously.
-Mutex ¨C Only one thread to access a resource at once. Example, when a client is accessing a file, no one else should have access the same file at the same time.
+Semaphores 
+Restrict the number of threads that can access a resource. Example, 
+limit max 10 connections to access a file simultaneously.
 
+Mutex 
+Only one thread to access a resource at once. Example, when a client is accessing a file, 
+no one else should have access the same file at the same time.
 
 Mutex example in Java,
 
@@ -104,7 +107,7 @@ public class MutexTest {
 Questions
 
 1/  What are events?
-The semantics of mutex, semaphore, event, critical section, etc¡­ are same. 
+The semantics of mutex, semaphore, event, critical section, etc are same. 
 All are synchronization primitives. Based on their cost in using them they are different. 
 We should consult the OS documentation for exact details.
 
@@ -114,34 +117,45 @@ Usually a mutex is costly operation due to protection protocols associated with 
 At last, the objective of mutex is atomic access. There are other ways to achieve atomic access like disabling interrupts 
 which can be much faster but ruins responsiveness. The alternate API makes use of disabling interrupts.
 
-3. monitors
-
+3. Monitors
 Monitors is a mechanism to group some instructions to claim that this region is protected and only 
 one thread can access it at a time. In java it is implemented by 'synchronized' block or method.
 
-In the Java virtual machine, every object and class is logically associated with a monitor. To implement the mutual exclusion capability of monitors, a lock (sometimes called a mutex) is associated with each object and class. This is called a semaphore in operating systems books, mutex is a binary semaphore.
+In the Java virtual machine, every object and class is logically associated with a monitor. 
+To implement the mutual exclusion capability of monitors, a lock (sometimes called a mutex) is 
+associated with each object and class. This is called a semaphore in operating systems books, 
+mutex is a binary semaphore.
 
-If one thread owns a lock on some data, then no others can obtain that lock until the thread that owns the lock releases it. It would be not convenient if we need to write a semaphore all the time when we do multi-threading programming. Luckily, we don't need to since JVM does that for us automatically.
+If one thread owns a lock on some data, then no others can obtain that lock until the thread that owns the lock releases it. 
+It would be not convenient if we need to write a semaphore all the time when we do multi-threading programming. 
+Luckily, we don't need to since JVM does that for us automatically.
+To claim a monitor region which means data not accessible by more than one thread, Java provide synchronized statements and synchronized methods. 
+Once the code is embedded with synchronized keyword, it is a monitor region. The locks are implemented in the background automatically by JVM
 
-To claim a monitor region which means data not accessible by more than one thread, Java provide synchronized statements and synchronized methods. Once the code is embedded with synchronized keyword, it is a monitor region. The locks are implemented in the background automatically by JVM
+We know that each object/class is associated with a Monitor. I think it is good to say that each object has a monitor, since each object could have its own critical section, 
+and capable of monitoring the thread sequence.
 
-We know that each object/class is associated with a Monitor. I think it is good to say that each object has a monitor, since each object could have its own critical section, and capable of monitoring the thread sequence.
-
-To enable collaboration of different threads, Java provide wait() and notify() to suspend a thread and to wake up another thread that are waiting on the object respectively. In addition, there are 3 other versions:
+To enable collaboration of different threads, Java provide wait() and notify() to suspend a thread and to wake up another thread that are waiting on the object respectively. 
+In addition, there are 3 other versions:
 
 wait(long timeout, int nanos)
 wait(long timeout) notified by other threads or notified by timeout. 
 notify(all)
 
-Those methods can only be invoked within a synchronized statement or synchronized method. The reason is that if a method does not require mutual exclusion, there is no need to monitor or collaborate between threads, every thread can access that method freely. 
+Those methods can only be invoked within a synchronized statement or synchronized method. 
+The reason is that if a method does not require mutual exclusion, there is no need to monitor 
+or collaborate between threads, every thread can access that method freely. 
 
 Examples in java about monitor
 
 synchronized keyword is used for exclusive accessing.
-To make a method synchronized, simply add the synchronized keyword to its declaration. Then no two invocations of synchronized methods on the same object can interleave with each other.
-Synchronized statements must specify the object that provides the intrinsic lock. When synchronized(this) is used, you have to avoid to synchronizing invocations of other objects' methods.
-wait() tells the calling thread to give up the monitor and go to sleep until some other thread 
-enters the same monitor and calls notify( ).
+To make a method synchronized, simply add the synchronized keyword to its declaration. 
+Then no two invocations of synchronized methods on the same object can interleave with each other.
+Synchronized statements must specify the object that provides the intrinsic lock. 
+When synchronized(this) is used, you have to avoid to synchronizing invocations of other objects' methods.
+
+4. Java Low Level Thread API
+wait() tells the calling thread to give up the monitor and go to sleep until some other thread enters the same monitor and calls notify( ).
 notify() wakes up the first thread that called wait() on the same object.
 
 Example1
@@ -150,7 +164,6 @@ public class ThreadA {
     public static void main(String[] args){
         ThreadB b = new ThreadB();
         b.start();
- 
         synchronized(b){
             try{
                 System.out.println("Waiting for b to complete...");
@@ -158,7 +171,6 @@ public class ThreadA {
             }catch(InterruptedException e){
                 e.printStackTrace();
             }
- 
             System.out.println("Total is: " + b.total);
         }
     }
@@ -169,7 +181,7 @@ class ThreadB extends Thread{
     @Override
     public void run(){
         synchronized(this){
-            for(int i=0; i<100 ; i++){
+            for(int i=0; i<100 ; i++) {
                 total += i;
             }
             notify();
@@ -183,7 +195,6 @@ Output:
 
 Waiting for b to complete...
 Total is: 4950
- 
  
 4. Modern concurrent constructs
 

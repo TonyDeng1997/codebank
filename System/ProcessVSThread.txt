@@ -21,11 +21,15 @@ Threads can also have their own security context, which can be used for imperson
 The major differences between threads and processes are:
 
 Threads share the address space of the process that created it; 
-processes have their own address space.
-Threads have direct access to the data segment of its process; processes have their own copy of the data segment of the parent process.
-Threads can directly communicate with other threads of its process; processes must use interprocess communication to communicate with sibling processes.
+Processes have their own address space.
+Threads have direct access to the data segment of its process; 
+Processes have their own copy of the data segment of the parent process.
+Threads can directly communicate with other threads of its process; 
+Processes must use interprocess communication to communicate with sibling processes.
 Threads have almost no overhead; processes have considerable overhead.
 New threads are easily created; new processes require duplication of the parent process.
-Threads can exercise considerable control over threads of the same process; processes can only exercise control over child processes.
-Changes to the main thread (cancellation, priority change, etc.) may affect the behavior of the other threads of the process; changes to the parent process do not affect child processes.
+Threads can exercise considerable control over threads of the same process; 
+Processes can only exercise control over child processes.
+Changes to the main thread (cancellation, priority change, etc.) may affect the behavior of the other threads of the process; 
+Changes to the parent process do not affect child processes.
 
