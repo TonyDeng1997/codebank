@@ -1,4 +1,4 @@
-package com.webbertech.leetcode.array.backtracking;
+package com.webbertech.leetcode.array.dp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ Input:
 ]
 
 Output: 7
-Explanation: Because the path 1¡ú3¡ú1¡ú1¡ú1 minimizes the sum.
+Explanation: Because the path 1ï¿½ï¿½3ï¿½ï¿½1ï¿½ï¿½1ï¿½ï¿½1 minimizes the sum.
 
  *
  * the idea is very very simple, it is trying to accumulate
