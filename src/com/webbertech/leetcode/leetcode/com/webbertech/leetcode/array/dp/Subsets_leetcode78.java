@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/*leetcode78
+/*	leetcode78
  * 
- *  Given a set of distinct integers, nums, 
- *  return all possible subsets.
+ *  Given a set of distinct integers, nums, return all possible subsets.
+
 Note: The solution set must not contain duplicate subsets.
 For example,
 If nums = [1,2,3], a solution is:
@@ -31,8 +31,10 @@ public class Subsets_leetcode78 {
 	    return list;
 	}
 
-	/*how this work: 
-	 * core logic is that, add+backtrack+remove
+	/* How this work: 
+	 * 1/ core logic is that, add+backtrack+remove
+	 * 2/ recFunc(resultList, templist, numberArray, start), note that start will increment
+	 * 3/ 
 	 * */
 	private static void backtrack(List<List<Integer>> list , List<Integer> tempList, int [] nums, int start){
 	    list.add(new ArrayList<>(tempList));
@@ -46,5 +48,11 @@ public class Subsets_leetcode78 {
 	public static void main(String[] args) {
 		int[] nums = {1,2,3};
 		List<List<Integer>> list = subsets(nums);
+		for (List<Integer> l: list) {
+			for (Integer i: l) {
+				System.out.print(i + " ");
+			}
+			System.out.println();
+		}
 	}
 }
