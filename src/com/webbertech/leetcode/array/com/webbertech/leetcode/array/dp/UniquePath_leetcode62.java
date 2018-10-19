@@ -58,11 +58,13 @@ public class UniquePath_leetcode62 {
 	        for(int j= 0;j<n;j++) {
 	            map[0][j]=1;
 	        }
+	        // Use the map[i][j] to store the value of the element on map[i-1][j] and map[i][j-1];
 	        for(int i = 1;i<m;i++) {
 	            for(int j = 1;j<n;j++) {
 	                map[i][j] = map[i-1][j]+map[i][j-1];
 	            }
 	        }
+	        // Finally the one in the right corner is the final result
 	        return map[m-1][n-1];
 	    }
 }
