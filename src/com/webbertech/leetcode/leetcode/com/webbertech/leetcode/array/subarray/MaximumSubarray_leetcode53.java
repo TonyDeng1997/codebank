@@ -24,12 +24,17 @@ package com.webbertech.leetcode.array.subarray;
 
 public class MaximumSubarray_leetcode53 {
 	 public static int maxSubArray(int[] nums) {
-	        if (nums.length == 0) return 0;
+	        
+		    //precondition
+		    if (nums.length == 0) return 0;
 	        if (nums.length ==1) return nums[0];
+	        
+	        // keep two vars to maintain the state, one is the maxSoFar, and 
 	        int maxSoFar= nums[0];
 	        int maxEndingHere = nums[0];
 	        for (int i=1;i<nums.length;i++) {
-	        	maxEndingHere= Math.max(maxEndingHere+ nums[i],nums[i]); //maxEndingHere is the max value when i in different places.
+	        	//maxEndingHere is the max value when i in different places.
+	        	maxEndingHere= Math.max(maxEndingHere+ nums[i],nums[i]); 
 	        	maxSoFar=Math.max(maxSoFar, maxEndingHere);	
 	        }
 	        
