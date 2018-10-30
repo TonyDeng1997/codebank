@@ -23,7 +23,7 @@ Jumping to the proper location in the user program to restart that program indic
 
 
 Scheduling disciplines
-These are algorithms in schedulig resources and they are used not only in operating system.
+These are algorithms in scheduling resources and they are used not only in operating system.
 
 printer, spooler.
 routers,
@@ -70,7 +70,6 @@ The scheduler assigns a fixed time unit per process, and cycles through them. If
     Because of high waiting times, deadlines are rarely met in a pure RR system.
     Starvation can never occur, since no priority is given. Order of time unit allocation is based upon process arrival time, similar to FIFO.
     If Time-Slice is large It becomes FCFS /FIFO or If it is short then it becomes SJF/SRTF.
-
 
 Multilevel queue scheduling
 Main article: Multilevel queue

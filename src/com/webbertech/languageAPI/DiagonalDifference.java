@@ -2,11 +2,9 @@ package com.webbertech.languageAPI;
 
 import java.io.*;
 import java.util.*;
+
 public class DiagonalDifference {
 
-
-
-	    
 	    static int getDiagonalAbs(int[][] data) {
 	        int len = data.length;
 	        if (len != data[0].length) {

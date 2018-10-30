@@ -4,7 +4,6 @@ Example1: copy the file to every subdirectory
 
 find . -type d -exec cp .htaccess {} \; 
 
-
 Example2: delete all the files in find
 
 find . -name "index.php" -exec rm {} \;
@@ -13,9 +12,30 @@ another way to do this,
 
 find . -name "index.php" -delete
 
+Example 3:  Find cmd will do recursively
+
+xiaofeng@xiaofengpc:/tmp$ find . -name "*.txt" 1>null 
+find: ‘./systemd-private-9159213ad481418999e36e8c4a28a3c6-systemd-resolved.service-2VZhg4’: Permission denied
+find: ‘./systemd-private-9159213ad481418999e36e8c4a28a3c6-systemd-timesyncd.service-0hlX2N’: Permission denied
+find: ‘./systemd-private-9159213ad481418999e36e8c4a28a3c6-bolt.service-N2GQox’: Permission denied
+find: ‘./systemd-private-9159213ad481418999e36e8c4a28a3c6-colord.service-1YZQax’: Permission denied
+find: ‘./systemd-private-9159213ad481418999e36e8c4a28a3c6-fwupd.service-A33GGo’: Permission denied
+find: ‘./systemd-private-9159213ad481418999e36e8c4a28a3c6-rtkit-daemon.service-RfoKEx’: Permission denied
+
+Clean output by get std error to null
+
+xiaofeng@xiaofengpc:/tmp$ find . -name "*.txt" 2>null 
+./3.txt
+./1.txt
+./4.txt
+./2.txt
+./test/test1/test2/5.txt
+./test/test1/test2/6.txt
+
+
 2/ grep 
 
-recursively search all subdirectory
+Example 1: Recursively search all subdirectory
 
 find . | xargs grep "texthere" *
 

@@ -1,14 +1,14 @@
 Load balancing
 
-Using multiple components with load balancing instead of a single component may increase reliability and availability through redundancy. 
-Load balancing usually involves dedicated software or hardware, such as a multilayer switch or a Domain Name System server process.
+Using multiple components with load balancing instead of a single component may 
+increase reliability and availability through redundancy. Load balancing usually involves 
+dedicated software or hardware, such as a multilayer switch or a Domain Name System server process.
  
 A few ways to do this,
 
 Round-robin DNS: by round-robin ip addresses.
 
 DNS delegation: 
-
 one.example.org A 192.0.2.1
 two.example.org A 203.0.113.2
 www.example.org NS one.example.org
