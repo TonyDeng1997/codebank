@@ -1,4 +1,4 @@
-package com.webbertech.leetcode.array;
+package com.webbertech.leetcode.array.subarray;
 
 import java.util.HashMap;
 import java.util.HashSet;

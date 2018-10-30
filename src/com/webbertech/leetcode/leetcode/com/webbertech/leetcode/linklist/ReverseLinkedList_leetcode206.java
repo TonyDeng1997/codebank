@@ -15,7 +15,7 @@ Follow up:
 
 A linked list can be reversed either iteratively or recursively. Could you implement both?
  * */
-public class ReverseLinkedListI_leetcode206 {
+public class ReverseLinkedList_leetcode206 {
 
 	
 	 // Solution1: iterative
