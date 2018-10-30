@@ -1,0 +1,54 @@
+1. iNode
+
+The inode (index node) is a fundamental concept in the Linux and UNIX filesystem. 
+Each object in the filesystem is represented by an inode.
+
+=> File type (executable, block special etc)
+=> Permissions (read, write etc)
+=> Owner
+=> Group
+=> File Size
+=> File access, change and modification time (remember UNIX or Linux never stores file creation time, 
+	this is favorite question asked in UNIX/Linux sys admin job interview)
+=> File deletion time
+=> Number of links (soft/hard)
+=> Extended attribute such as append only or no one can delete file including root user (immutability)
+=> Access Control List (ACLs)
+
+All the above information stored in an inode. In short the inode identifies the file and its attributes 
+as above). Each inode is identified by a unique inode number within the file system. Inode is also know 
+as index number.
+
+To see inode number of file, and attribute you can do the following two ways,
+
+1/ ls -i /etc/passwd
+2/ stat /etc/passwd
+
+2. Print hardware information
+To remember the following information, just try to remember ls*... 
+
+sudo lshw
+sudo lshw -short
+sudo lscpu
+sudo vi /proc/cpuinfo
+
+List block devices
+lsblk 
+lsusb -v
+lspci -t
+lsscsi -s
+
+Print SATA devices
+sudo hdparam /dev/sda1
+sudo hdparam -g /dev/sda1
+
+Print Linux File System Information
+fdisk, tool to modify file system partitions.
+
+sudo fdisk -l
+
+3. System Call
+
+int stat(const char *filename, struct stat *buf);
+int lstat(const char *filename, struct stat *buf);
+int fstat(int filedesc, struct stat *buf);
