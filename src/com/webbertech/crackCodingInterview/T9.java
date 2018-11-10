@@ -25,7 +25,7 @@ import java.util.Set;
  *  
  *  Solution 3 which is the following, is to use hashmap
  */
-class HashMapList<T, E> {
+class MyHashMapList<T, E> {
 	HashMap<T, ArrayList<E>> map = new HashMap<T, ArrayList<E>>();
 	
     public void put(T key, E item) {
@@ -69,15 +69,15 @@ public class T9 {
 	//solution 2, dictionary lookup, precompute word with numbers and put in a map
 	
 	//main method to lookup a number to get a list of words
-	public ArrayList<String> getValidT9Words(String numbers, HashMapList<String, String> dictionary) {
+	public ArrayList<String> getValidT9Words(String numbers, MyHashMapList<String, String> dictionary) {
 		
 		return dictionary.get(numbers);
     }
 
 	//build a hash map that key: numbers and values is a list of words
 	
-	public HashMapList<String, String> buildDictionary(String[] words) {
-		HashMapList<String, String> dictionary = new HashMapList<String, String>();
+	public MyHashMapList<String, String> buildDictionary(String[] words) {
+		MyHashMapList<String, String> dictionary = new MyHashMapList<String, String>();
 		for (String word : words) {
 			String number = getNumberFromWord(word);
 			dictionary.put(number, word);

@@ -136,12 +136,15 @@ public class MultiSearchFast {
   
 	HashMapList<String, Integer> searchAll(String big, String[] smalls) {
 		HashMapList<String, Integer> lookup  = new HashMapList<String, Integer>();
-		TrieNode root = createTreeFromStrings(smalls, maxLen).getRoot();
+		//TODO revisit the following line
+		/*TrieNode root = createTreeFromStrings(smalls, maxLen).getRoot();
 		
 		for(int i=0; i< big.length();i++) {
 			ArrayList<String> strings = findStringAtLoc(root, big, i);
-			insertIntoHashMap(strings, lookup, i);
+			
+			//insertIntoHashMap(strings, lookup, i);
 		}
+		*/
 		return lookup;
 	}
 	
