@@ -1,4 +1,4 @@
-package com.webbertech.java;
+package com.webbertech.java.concurrent;
 
 public class StartAndStopThread implements Runnable {
 	private boolean doStop = false;

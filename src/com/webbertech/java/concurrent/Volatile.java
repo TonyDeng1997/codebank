@@ -1,4 +1,4 @@
-package com.webbertech.java;
+package com.webbertech.java.concurrent;
 /*
  *  Volatile addresses memory inconsistency issue but 
  *  it has performance cost to not to use cpu cache.

@@ -1,4 +1,4 @@
-package com.webbertech.java;
+package com.webbertech.java.concurrent;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;

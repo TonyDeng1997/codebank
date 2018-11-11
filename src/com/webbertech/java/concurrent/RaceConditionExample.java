@@ -1,4 +1,4 @@
-package com.webbertech.java;
+package com.webbertech.java.concurrent;
 
 /*
  * Object created in each thread is thread safe,

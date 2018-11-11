@@ -1,4 +1,4 @@
-package com.webbertech.java;
+package com.webbertech.java.concurrent;
 
 // Java code to illustrate Reentrant Locks 
 import java.util.concurrent.ExecutorService; 
