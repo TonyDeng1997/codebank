@@ -38,9 +38,7 @@ public class FunctionalInterface {
 	   }
 		
 	   public static void eval(List<Integer> list, Predicate<Integer> predicate) {
-
 	      for(Integer n: list) {
-
 	         if(predicate.test(n)) {
 	            System.out.println(n + " ");
 	         }
