@@ -1,5 +1,12 @@
 package com.webbertech.java.concurrent;
 
+/*
+ * 
+ * This example is the Java current package reentrant lock
+ * example
+ * */
+
+
 // Java code to illustrate Reentrant Locks 
 import java.util.concurrent.ExecutorService; 
 import java.util.concurrent.Executors; 

@@ -2,7 +2,6 @@ package com.webbertech.java.concurrent;
 /*
  *  Volatile addresses memory inconsistency issue but 
  *  it has performance cost to not to use cpu cache.
- *  
  *  It means not to read/write to cpu cache, thus directly read/write
  *  to main memory.
  *  

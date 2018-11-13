@@ -4,10 +4,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 /*
- * An implementation of blocking queue, 
+ * An implementation of blocking queue(thread safe), 
  * 1/ when enqueue and the queue is full then wait, if empty then notifyAll, then do enqueue
  * 2/ when dequeue and the queue is empty then wait, if full then notifyAll, then to the dequeue
  * 
+ * This example uses wait and notify.  
  * 
  * */
 public class BlockingQueue {
